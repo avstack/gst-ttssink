@@ -1,0 +1,45 @@
+[package]
+name = "gst-ttssink"
+version = "0.1.0"
+edition = "2021"
+license = "MIT/Apache-2.0"
+readme = "README.md"
+authors = ["Jasper Hugo <jasper@avstack.io>"]
+description = "A GStreamer sink implementing text-to-speech via platform APIs"
+repository = "https://github.com/avstack/gst-ttssink"
+
+[dependencies]
+gstreamer = { version = "0.20", default-features = false }
+gstreamer-base = { version = "0.20", default-features = false }
+gstreamer-audio = { version = "0.20", default-features = false }
+once_cell = { version = "1", default-features = false, features = ["std"] }
+tts = { version = "0.25", default-features = false, features = ["speech_dispatcher_0_11"] }
+
+[dev-dependencies]
+gstreamer-check = { version = "0.20", default-features = false }
+
+[build-dependencies]
+gst-plugin-version-helper = { version = "0.7", default-features = false }
+
+[lib]
+name = "gstttssink"
+crate-type = ["cdylib", "rlib"]
+path = "src/lib.rs"
+
+[features]
+static = []
+capi = []
+doc = ["gstreamer/v1_22"]
+
+[package.metadata.capi]
+min_version = "0.8.0"
+
+[package.metadata.capi.header]
+enabled = false
+
+[package.metadata.capi.library]
+install_subdir = "gstreamer-1.0"
+versioning = false
+
+[package.metadata.capi.pkg_config]
+requires_private = "gstreamer-1.0, gstreamer-base-1.0, gstreamer-audio-1.0, gobject-2.0, glib-2.0, gmodule-2.0"
