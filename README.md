@@ -22,7 +22,8 @@ cargo install cargo-c
 
 git clone https://github.com/avstack/gst-ttssink
 cd gst-ttssink
-cargo cinstall
+cargo cbuild --release
+export GST_PLUGIN_PATH=$(pwd)/target/release
 ```
 
 ## Example usage (type text and it will be played when you press enter)
