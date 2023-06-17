@@ -13,7 +13,19 @@ Supported platforms are those of the [tts crate](https://crates.io/crates/tts):
  * Android
  * WebAssembly (if you can manage to compile GStreamer for WebAssembly...)
 
-Example usage (type text and it will be played when you press enter):
+## Installation
+
+gst-ttssink is written in Rust and uses the cargo-c helper. Set up a Rust development environment (e.g. using [rustup](https://rustup.rs)) and then:
+
+```
+cargo install cargo-c
+
+git clone https://github.com/avstack/gst-ttssink
+cd gst-ttssink
+cargo cinstall
+```
+
+## Example usage (type text and it will be played when you press enter)
 
 ```
 gst-launch-1.0 --quiet fdsrc ! 'text/x-raw,format=utf8' ! ttssink
